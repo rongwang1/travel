@@ -26,8 +26,8 @@ export default{
 }
 </script>
 <style  lang="stylus" scoped>
-//      ">>>"的意思是穿透：引用了第三方组件，需要在组件中局部修改第三方组件的样式
-//      而又不想去除scoped属性造成组件之间的样式污染。此时只能通过特殊的方式，穿透scoped
+//      ">>>"的意思是穿透：当引用了第三方组件，若需要在组件中局部修改第三方组件的样式
+//      但又不想去除scoped属性而造成组件之间的样式污染。此时只能通过特殊的方式来穿透scoped
 .wrapper>>>.swiper-pagination-bullet
    background-color #fff
 .wrapper
