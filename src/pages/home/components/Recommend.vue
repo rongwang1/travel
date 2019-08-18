@@ -2,7 +2,7 @@
 <div>
 <div class='title'>热销推荐</div>
 <ul>
-    <li class="item border-bottom"  v-for="item of recommendList" :key="item.id">
+    <li class="item border-bottom"  v-for="item of list" :key="item.id">
         <img  class="item-img" :src="item.imgUrl" alt="">
         <div class="item-info">
             <p class="item-title">{{item.title}}</p>
@@ -16,26 +16,8 @@
 <script>
 export default {
     name:'HomeRecommend',
-    data (){
-       return {
-           recommendList:[{
-               id:'001',
-               imgUrl:'//tr-osdcp.qunarzz.com/tr-osd-tr-manager/img/4215243616425303cff934857fa13897.jpg',
-               title:'从你的世界路过从你的世界路过从你的世界路过从你的世界路过',
-               desc:'圆梦稻城亚丁圆梦稻城亚丁圆梦稻城亚丁圆梦稻城亚丁圆梦稻城亚丁'
-           },{
-               id:'002',
-               imgUrl:'//tr-osdcp.qunarzz.com/tr-osd-tr-manager/img/53b10c55117cd5b006449df8b97c9e76.jpg',
-               title:'再忙也要看世界，马来西亚浪漫之旅',
-               desc:'再忙也要看世界，马来西亚浪漫之旅再忙也要看世界，马来西亚浪漫之旅' 
-           },{
-               id:'003',
-               imgUrl:'//tr-osdcp.qunarzz.com/tr-osd-tr-manager/img/2cb12a625b4f5cb4d6d9a1f4cd307d65.jpg',
-               title:'穿越高山草甸，在青海湖旁发个呆',
-               desc:'穿越高山草甸，在青海湖旁发个呆穿越高山草甸，在青海湖旁发个呆' 
-           }
-           ]
-       }
+    props:{
+        list:Array
     }
 }
 </script>

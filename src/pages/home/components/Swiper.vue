@@ -1,8 +1,8 @@
 <template>
 <div class="wrapper">
- <swiper :options="swiperOption">
+ <swiper :options="swiperOption" v-if="showSwiper">
     <!-- slides -->
-    <swiper-slide v-for="item of swiperList"  :key="item.id"><img  class="swiper-img" :src="item.imgUrl" alt="#"></swiper-slide>
+    <swiper-slide v-for="item of list"  :key="item.id"><img  class="swiper-img" :src="item.imgUrl" alt="#"></swiper-slide>
     <div class="swiper-pagination"  slot="pagination"></div>
   </swiper>
 </div>
@@ -10,19 +10,22 @@
 <script>
 export default{
      name:'HomeSwiper',
+     props:{
+        list:Array
+     },
      data (){
          return{
              swiperOption:{
                  pagination:'.swiper-pagination',
                  loop:true
-             },
-             swiperList:[
-                 {id:'01',imgUrl:'//m.360buyimg.com/mobilecms/s750x366_jfs/t1/23112/33/6431/99212/5c540d7fEf8000223/fddb6b047c02ba3d.jpg!cr_1125x549_0_72!q70.jpg.dpg'},
-                 {id:'02',imgUrl:'//m.360buyimg.com/mobilecms/s750x366_jfs/t1/45822/37/1258/360866/5cefb71fE95298b80/052ef4b9d125778a.jpg!cr_1125x549_0_72!q70.jpg.dpg'}
-             ]
+             }
+        }
+     },
+     computed:{
+             showSwiper(){
+                return this.list.length
          }
-     }
-     
+     }    
 }
 </script>
 <style  lang="stylus" scoped>
