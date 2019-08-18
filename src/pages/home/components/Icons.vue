@@ -51,6 +51,7 @@ export default{
 @import '~styles/varibles.styl'
 @import '~styles/mixins.styl'
 .icons
+    margin-top .1rem
     height 0
     overflow hidden
     padding-bottom 50%
