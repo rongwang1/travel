@@ -41,18 +41,18 @@
 </script>
 <style lang='stylus' scoped>
 @import '~styles/mixins.styl'
-.title
+  .title
     line-height .8rem
     background-color #eee
     margin-top .2rem
     text-indent .2rem
-.item-wrap-img
+  .item-wrap-img
     overflow hidden
     height 0
     padding-bottom 33.9%
     .item-img
         width 100%
-.item-info
+  .item-info
     padding .1rem
     .item-title
         line-height .54rem
@@ -61,8 +61,6 @@
     .item-desc
         line-height .4rem
         color #cccccc
-        ellipsis()
-
-    
+        ellipsis()  
 
 </style>
