@@ -6,9 +6,11 @@
     <div class='header-input'>
         <span class='iconfont'>&#xe60b;</span>    
         输入城市/景点/游玩主题</div>
+    <router-link to='/city'>
     <div class='header-right'>
         {{this.city}} <span class='iconfont arrow-icon'>&#xe672;</span>  
     </div>
+    </router-link>
 </div>
 </template>
 <script>
@@ -22,12 +24,12 @@ export default {
 <style  lang='stylus'  scoped>   /* scoped实现了样式的模块化，只对当前的组件起效，防止样式污染 */
 @import '~styles/varibles.styl'
 .header
-   line-height .86rem
-   height 0.86rem
+   line-height $headerHeight
+   height  $headerHeight
    background-color:$bgColor
    display:flex
    color:#fff
-   font-size:16px
+   font-size .32rem
    .header-left
        width .64rem
        float:left
@@ -49,6 +51,7 @@ export default {
        float:right
        text-align center
        font-size .3rem
+       color #ffffff
        .arrow-icon
            font-size .4rem
            margin-left -.05rem

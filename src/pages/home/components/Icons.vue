@@ -20,8 +20,13 @@ export default{
    },
    data () {
        return{
+<<<<<<< HEAD
            swiperOption :{
               swiperOption:false
+=======
+           swiperOption:{
+               swiperOption:false
+>>>>>>> city-router
            }
        }
    },
