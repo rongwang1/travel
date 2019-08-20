@@ -20,7 +20,9 @@ export default{
    },
    data () {
        return{
-           swiperOption:false
+           swiperOption:{
+               swiperOption:false
+           }
        }
    },
       //计算属性，计算该条数据应该在哪一个页面上

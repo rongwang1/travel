@@ -24,12 +24,12 @@ export default {
 <style  lang='stylus'  scoped>   /* scoped实现了样式的模块化，只对当前的组件起效，防止样式污染 */
 @import '~styles/varibles.styl'
 .header
-   line-height .86rem
-   height 0.86rem
+   line-height $headerHeight
+   height  $headerHeight
    background-color:$bgColor
    display:flex
    color:#fff
-   font-size:16px
+   font-size .32rem
    .header-left
        width .64rem
        float:left
