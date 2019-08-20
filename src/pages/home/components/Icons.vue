@@ -1,3 +1,4 @@
+
 <template>
     <div  class='icons'>
          <swiper :options="swiperOption">
@@ -20,13 +21,8 @@ export default{
    },
    data () {
        return{
-<<<<<<< HEAD
-           swiperOption :{
-              swiperOption:false
-=======
            swiperOption:{
                swiperOption:false
->>>>>>> city-router
            }
        }
    },
@@ -83,5 +79,4 @@ export default{
            line-height  .44rem
            color $darkTextColor
            ellipsis()   //文字压缩  调用mixins.styl 文件中的样式
-
 </style>
