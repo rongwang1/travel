@@ -12,47 +12,15 @@
       <div class='area'>
           <div class='title border-topbottom'>热门城市</div>
             <div class='button-list'>
-              <div class='button-wrapper'>
-                  <div class='button'>上海市</div>
-              </div> 
-                <div class='button-wrapper'>
-                  <div class='button'>北京市</div>
-              </div> 
-                <div class='button-wrapper'>
-                  <div class='button'>南京市</div>
-              </div> 
-                <div class='button-wrapper'>
-                  <div class='button'>苏州市</div>
-              </div> 
-                <div class='button-wrapper'>
-                  <div class='button'>无锡市</div>
-              </div> 
+              <div class='button-wrapper' v-for="item of hotCities" :key="item.id">
+                  <div class='button'>{{item.name}}</div>
+              </div>
           </div>
       </div>
-      <div class='area '>
-        <div class='title border-topbottom'>A</div>
-        <div class='other-area  border-bottom'>
-           <div class='item  border-bottom'>阿克苏地区</div>   
-           <div class='item  border-bottom'>阿克苏地区</div>   
-           <div class='item  border-bottom'>阿克苏地区</div>   
-           <div class='item  border-bottom'>阿克苏地区</div>   
-           <div class='item  border-bottom'>阿克苏地区</div>   
-           <div class='item  border-bottom'>阿克苏地区</div>   
-           <div class='item  border-bottom'>阿克苏地区</div>   
-           <div class='item  border-bottom'>阿克苏地区</div>   
-           <div class='item  border-bottom'>阿克苏地区</div>          
-        </div>
-        <div class='title border-topbottom'>A</div>
-        <div class='other-area  border-bottom'>
-           <div class='item  border-bottom'>阿克苏地区</div>   
-           <div class='item  border-bottom'>阿克苏地区</div>   
-           <div class='item  border-bottom'>阿克苏地区</div>   
-           <div class='item  border-bottom'>阿克苏地区</div>   
-           <div class='item  border-bottom'>阿克苏地区</div>   
-           <div class='item  border-bottom'>阿克苏地区</div>   
-           <div class='item  border-bottom'>阿克苏地区</div>   
-           <div class='item  border-bottom'>阿克苏地区</div>   
-           <div class='item  border-bottom'>阿克苏地区</div>          
+      <div class='area ' v-for="item of cities" :key="item.title">
+        <div class='title border-topbottom'>{{item.title}}</div>
+        <div class='other-area  border-bottom' v-for="city of item.lists" :key="city.index">
+           <div class='item  border-bottom'>{{city}}</div>         
         </div>
       </div> 
   </div>>     
@@ -64,6 +32,10 @@ export default {
     name:'CityList',
     mounted () {
       this.scroll=new Bscroll(this.$refs.wrapper)
+    },
+    props:{
+      hotCities:Array,
+      cities:Array
     }
 }
 </script>
@@ -95,7 +67,7 @@ export default {
             .button-wrapper
                 float left 
                 width 33.33% 
-                .button 
+                .button
                     margin .1rem
                     padding .2rem 0
                     text-align center
