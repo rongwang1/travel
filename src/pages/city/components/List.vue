@@ -17,7 +17,7 @@
               </div>
           </div>
       </div>
-      <div class='area ' v-for="item of cities" :key="item.title">
+      <div class='area ' v-for="item of cities" :key="item.title" :ref="item.title">
         <div class='title border-topbottom'>{{item.title}}</div>
         <div class='other-area  border-bottom' v-for="city of item.lists" :key="city.index">
            <div class='item  border-bottom'>{{city}}</div>         
@@ -35,8 +35,18 @@ export default {
     },
     props:{
       hotCities:Array,
-      cities:Array
+      cities:Array,
+      letter:String
+    },
+    watch:{
+			  letter () {
+				if (this.letter) {
+            const element = this.$refs[this.letter][0]
+            this.scroll.scrollToElement(element)
+				}
+			}
     }
+      
 }
 </script>
 <style lang="stylus" scoped>
