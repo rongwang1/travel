@@ -1,21 +1,21 @@
 <template>
   <ul class='list'>
       <li class='item' 
-       v-for="item of cities" 
-       :key="item.title" 
-       :ref="item.title"
+       v-for="item of letters" 
+       :key="item" 
+       :ref="item"
        @click="handleLetterClick"
        @touchstart="handleTouchStart"
        @touchmove="handleTouchMove"
        @touchend="handleTouchEnd"
-      >{{item.title}}</li>
+      >{{item}}</li>
   </ul>
 </template>
 <script>
     export default {
         name:'CityAlphabet',
         props:{
-          cities:Array
+          cities:Object
         },
         data(){
              return{
@@ -28,16 +28,15 @@
            this.startY=this.$refs['A'][0].offsetTop
         },
         computed:{
-          //这边因为json文件的格式原因我暂时拉不出数据555555~,所以手动写死了数据(之后想到办法后改进)
            letters(){
-            const A=['A','B','C','D','E','F','G','H','J','K','L','M','N','P','Q','R','S','T','X','Y','Z']
-            const letters=[]
-            for (let i=0; i<A.length; i++){
-              letters.push(A[i])
+                const letters=[]
+                for(let i in this.cities){
+                   letters.push(i)   
+                      
+                }
+                 return letters
             }
-            return letters
-           }    
-        },
+           },
         methods:{
           handleLetterClick(e){ 
             this.$emit('change',e.target.innerText)

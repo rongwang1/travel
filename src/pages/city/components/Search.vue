@@ -1,11 +1,56 @@
 <template>
-  <div class='city-search'>
-      <input  class='search-input' type="text" placeholder="请输入城市名或拼音">
+<div>
+   <div class='city-search'>
+      <input  v-model="keyword" class='search-input' type="text" placeholder="请输入城市名或拼音">
   </div>
+  <div class="search-content" v-show="keyword"  ref="search">
+    <ul>
+      <li class="search-item   border-bottom" v-for="item of list" :key="item.id">{{item.name}}</li>
+      <li class="search-item border-bottom" v-show="hasNodata">未匹配相关数据</li>
+  </ul>
+  </div>
+</div>
 </template>
 <script>
+   import Bscroll from 'better-scroll'
    export default{
-       name:'CitySearch'
+       name:'CitySearch',
+       props:{
+           cities:Object
+       },
+       data (){
+           return {
+               keyword:'',
+               timer:null,
+               list:[]
+           }
+       },
+       computed:{
+           hasNodata(){
+               return !this.list.length
+           }
+       },
+       watch:{
+           keyword (){
+              if(this.timer){
+                  clearTimeout(this.timer)
+              }
+              this.timer=setTimeout(() => {
+                  const result=[]
+                  for(let i in this.cities){
+                      this.cities[i].forEach((value)=>{
+                          if(value.spell.indexOf(this.keyword)>-1||value.name.indexOf(this.keyword)>-1){
+                              result.push(value)
+                          }
+                      })
+                  }
+                  this.list=result
+              }, 100);
+           }
+       },
+       mounted(){
+           this.scroll=new Bscroll(this.$refs.search)
+       }
    }
 </script>
 <style lang="stylus"  scoped>
@@ -23,4 +68,18 @@
             border-radius .1rem
             text-align center
             color #666666
+    .search-content
+        z-index 1
+        overflow hidden
+        position absolute
+        top 1.58rem
+        left 0 
+        right 0 
+        bottom 0 
+        .search-item
+           line-height .62rem
+           padding-left .2rem
+           background-color #fff
+           color #666
+
 </style>

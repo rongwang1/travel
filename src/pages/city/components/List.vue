@@ -17,10 +17,10 @@
               </div>
           </div>
       </div>
-      <div class='area ' v-for="item of cities" :key="item.title" :ref="item.title">
-        <div class='title border-topbottom'>{{item.title}}</div>
-        <div class='other-area  border-bottom' v-for="city of item.lists" :key="city.index">
-           <div class='item  border-bottom'>{{city}}</div>         
+      <div class='area ' v-for="(item,key) of cities" :key="key" :ref="key">
+        <div class='title border-topbottom'>{{key}}</div>
+        <div class='other-area  border-bottom' v-for="city of item" :key="city.id">
+           <div class='item  border-bottom'>{{city.name}}</div>         
         </div>
       </div> 
   </div>>     
@@ -35,7 +35,7 @@ export default {
     },
     props:{
       hotCities:Array,
-      cities:Array,
+      cities:Object,
       letter:String
     },
     watch:{
