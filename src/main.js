@@ -3,6 +3,7 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
+import store from './store'
 import VueAwesomeSwiper from 'vue-awesome-swiper'
 //npm install fastclick --save 安装fastclick 是为了解决移动端点击300毫秒延迟的问题
 import fastClick from 'fastclick'
@@ -21,6 +22,7 @@ Vue.use(VueAwesomeSwiper, /* { default global options } */)
 new Vue({
   el: '#app',
   router,
+  store,
   components: { App },
   template: '<App/>'
 })

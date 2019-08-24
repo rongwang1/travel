@@ -5,21 +5,21 @@
           <div class='title  border-topbottom'>当前城市</div>
           <div class='button-list'>
               <div class='button-wrapper'>
-                  <div class='button'>深圳市</div>
+                  <div class='button'>{{this.$store.state.city}}</div>
               </div> 
           </div>
       </div>
       <div class='area'>
           <div class='title border-topbottom'>热门城市</div>
             <div class='button-list'>
-              <div class='button-wrapper' v-for="item of hotCities" :key="item.id">
+              <div class='button-wrapper' v-for="item of hotCities" :key="item.id" @click="handleCityClick(item.name)">
                   <div class='button'>{{item.name}}</div>
               </div>
           </div>
       </div>
       <div class='area ' v-for="(item,key) of cities" :key="key" :ref="key">
         <div class='title border-topbottom'>{{key}}</div>
-        <div class='other-area  border-bottom' v-for="city of item" :key="city.id">
+        <div class='other-area  border-bottom' v-for="city of item" :key="city.id"  @click="handleCityClick(city.name)">
            <div class='item  border-bottom'>{{city.name}}</div>         
         </div>
       </div> 
@@ -30,13 +30,16 @@
 import Bscroll from 'better-scroll'
 export default {
     name:'CityList',
-    mounted () {
-      this.scroll=new Bscroll(this.$refs.wrapper)
-    },
     props:{
       hotCities:Array,
       cities:Object,
       letter:String
+    },
+    methods:{
+      handleCityClick( city){
+           this.$store.commit('changeCity',city)   //可以直接使用commit方法直接调用mutations，可以不用dispathd调用actions
+           this.$router.push('./')    //编程式导航，路由跳转到首页
+      }
     },
     watch:{
 			  letter () {
@@ -45,8 +48,10 @@ export default {
             this.scroll.scrollToElement(element)
 				}
 			}
-    }
-      
+    },
+    mounted () {
+      this.scroll=new Bscroll(this.$refs.wrapper)
+    }      
 }
 </script>
 <style lang="stylus" scoped>
