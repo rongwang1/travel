@@ -1,6 +1,6 @@
 <template>
     <div>
-        <detail-banner></detail-banner>
+        <detail-banner :sightName="sightName" :bannerImg="bannerImg" :gallaryImgs="gallaryImgs"></detail-banner>
         <detail-header></detail-header>
         <detail-list :list="list"></detail-list>
         <div class='content'></div>
@@ -10,6 +10,7 @@
 import DetailBanner from './components/Banner'
 import DetailHeader from './components/Header'
 import DetailList from './components/List'
+import Axios from 'axios'
 export default {
    name:"Detail",
    components: {
@@ -17,36 +18,40 @@ export default {
        DetailHeader,
        DetailList
    },
-   data(){
+   data(){  
        return {
-           list:[
-                {
-                title: "学生票",
-                children:[
-                    {
-                     title:"学生票系列一",
-                     children:[{
-                         title:"博物馆",
-                     },{
-                         title:"科技馆"
-                     }]
-                    },
-                    {
-                     title:"学生票系列二"
-                    },
-                ]
-               },{
-                title:"儿童票"
-               },{
-                title:"成人票"
-               }
-           ]
+          sightName:'',
+          bannerImg:'',
+          gallaryImgs:[],
+          list:[]
        }
+   },
+   methods:{
+      getDetailInfo(){
+         Axios.get('/api/detail.json',{
+             params:{
+                 id:this.$route.params.id
+             }
+         }).then(this.handleGetDataSucc)
+      },
+      handleGetDataSucc(res){
+             res=res.data
+             if(res.ret && res.data){
+                 const data=res.data
+                 this.sightName=data.sightName
+                 this.bannerImg=data.bannerImg
+                 this.gallaryImgs=data.gallaryImgs
+                 this.list=data.categoryList  
+             }
+      }
+      },
+   mounted(){
+       this.getDetailInfo()
    }
 }
 </script>
 <style  lang="stylus" scoped>
 .content
-   height 50rem
+   height 40rem
 
 </style>

@@ -22,5 +22,10 @@ export default new Router({
       name:'Detail',
       component:Detail
     }
-  ]
+  ],
+
+//  页面切换(路由切换)时，新页面始终展示X轴为0，Y轴为0
+  scrollBehavior (to, from, savedPosition) {
+    return { x: 0, y: 0 }
+  }
 })
