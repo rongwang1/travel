@@ -12,9 +12,9 @@ module.exports = {
     assetsPublicPath: '/',
     proxyTable: {
       '/api': {
-        target:'http://localhost:8080',
+        target:'http://localhost',
         pathRewrite: {
-          '^/api':'/static/mock'
+          '^/api':'/api'
         }
       }
     },
@@ -57,7 +57,7 @@ module.exports = {
     // Paths
     assetsRoot: path.resolve(__dirname, '../dist'),
     assetsSubDirectory: 'static',
-    assetsPublicPath: '/',
+    assetsPublicPath: '/',  //打包文件所在的运行目录，若文件位置在服务器修改，这边也要做出相应的修改
 
     /**
      * Source Maps

@@ -5,6 +5,8 @@ import App from './App'
 import router from './router'
 import store from './store'
 import VueAwesomeSwiper from 'vue-awesome-swiper'
+//npm install babel-polyfill --save 安装babel-polyfill解决不支持promise的问题
+import 'babel-polyfill'
 //npm install fastclick --save 安装fastclick 是为了解决移动端点击300毫秒延迟的问题
 import fastClick from 'fastclick'
 //样式重置css文件
